@@ -3,7 +3,7 @@ class CsvImportService
   
     attr_reader :file_path, :model, :attributes
   
-    def initialize(file_path, model, *attributes)
+    def initialize(file_path, model, attributes)
       @file_path = file_path
       @model = model
       @attributes = attributes
