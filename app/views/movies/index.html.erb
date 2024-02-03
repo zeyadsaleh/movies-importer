@@ -15,7 +15,7 @@
       <th><%= sort_link(@q, :desc, "Description") %></th>
       <th>Actor</th>
       <th>Director</th>
-      <th>Avarage Reviews</th>
+      <th><%= sort_link(@q, :average_reviews, "Avarage Reviews") %></th>
       <th><%= sort_link(@q, :created_at, "Created at") %></th>
     </tr>
   </thead>
