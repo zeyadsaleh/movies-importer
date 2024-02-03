@@ -1,14 +1,38 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Movies</h1>
+<%= search_form_for @q do |f| %>
+  <%= f.label :name_cont %>
+  <%= f.search_field :name_cont %>
 
+  <%= f.submit "Search" %>
+<% end %>
 <div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
+  <table>
+  <thead>
+    <tr>
+      <th><%= sort_link(@q, :name, "name") %></th>
+      <th><%= sort_link(@q, :desc, "Description") %></th>
+      <th>Actor</th>
+      <th>Director</th>
+      <th>Avarage Reviews</th>
+      <th><%= sort_link(@q, :created_at, "Created at") %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= movie.name %></td>
+        <td><%= movie.desc %></td>
+        <td><%= movie.actor.name %></td>
+        <td><%= movie.director.name %></td>
+        <td><%= movie.average_reviews %></td>
+        <td><%= movie.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 </div>
 
 <%= link_to "New movie", new_movie_path %>
